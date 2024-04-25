@@ -1,0 +1,30 @@
+[
+  {
+    "id":1,
+    "title": "title1",
+    "author": "author",
+    "isbn": "1234567890",
+    "publicationdate": "1999-12-30"
+  },
+  {
+    "id":2,
+    "title": "title2",
+    "author": "author",
+    "isbn": "1234567890",
+    "publicationdate": "1999-12-30"
+  },
+  {
+    "id":3,
+    "title": "title3",
+    "author": "author",
+    "isbn": "1234567890",
+    "publicationdate": "1999-12-30"
+  },
+  {
+    "id":4,
+    "title": "title4",
+    "author": "author",
+    "isbn": "1234567890",
+    "publicationdate": "1999-12-30"
+  }
+]
