@@ -66,10 +66,14 @@ div#error1 {
   color: #ff7272;
   font-weight: 500;
 }
+
 button#ert {
-  
-  margin-left: 164px;
+  float: right;
 }
+
+
+  
+
 /* .gamut-1jn300j-FlexBox {
   display: flex;
   width: auto;

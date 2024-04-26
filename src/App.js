@@ -3,13 +3,16 @@ import "./App.css";
 import { useState } from "react";
 import { setNestedObjectValues, useFormik } from "formik";
 import Default from "./DefaultData.json";
-
+import AuthorPage from "./AuthorPage";
 function App() {
   const [add, setAdd] = useState(false);
   const [addData, setAdddata] = useState();
   const [json, setJson] = useState(Default);
   const [edit, setEdit] = useState(false);
   const [editid, setEditid] = useState();
+  const [details, setDetails] = useState(false);
+  const [authorid, setAuthorid] = useState();
+  const [edit2,setEdit2] = useState(false);
 
   const validate = (values) => {
     const errors = {};
@@ -69,12 +72,73 @@ function App() {
       setEdit(false);
     },
   });
+  const Authorrrr = (id) => {
+    //     const aw = json.filter((item) => item.id== id);
+    // console.log(aw)
+    return (
+      // <ul className="gamut-glpvwy-LayoutGrid e10xj1580">
+        <li className="gamut-87ddz7-StyledColumn e1y0e4q30">
+          <div className="gamut-1jn300j-FlexBox e1tc6bzh0">
+            <div className="card" style={{ width: "18rem" }}>
+              <div className="card-body">
+                <h3 className="card-title">{json[id - 1].author}</h3>
+
+                <p className="card-text">{json[id - 1].biography}</p>
+              </div>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">{json[id - 1].DOB}</li>
+              </ul>
+              <div className="card-body">
+                <button href="#" className="card-link" onClick={() => editTwo()}>
+                  Edit
+                </button>
+                <button
+                  href="#"
+                  className="card-link"
+                  onClick={() => cancelE()}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+      // </ul>
+    );
+  };
+
+  // function authorEdit (){
+
+  // }
+  function cancelE (){
+    setAuthorid(0);
+  }
+  function authorShow(id) {
+    setAuthorid(id);
+    setDetails(true);
+    // setJson(json.map((e) => (e.id === id ? Authorrrr : e)));
+  }
+
+  function step1() {
+    console.log("hi");
+    setJson(
+      json.map((e) =>
+        e.id === authorid ? (
+          <AuthorPage id={authorid} json={json} setJson={setJson} />
+        ) : (
+          e
+        )
+      )
+    );
+  }
 
   function edit11(i) {
     setEditid(i);
     setEdit(true);
   }
-
+  function editTwo(i) {
+   setEdit2(true)
+  }
   // Function to add or edit an item in the json array
   function addOrEditItem(v, id) {
     // Check if edit is true
@@ -327,49 +391,67 @@ function App() {
 
   const View = (
     <ul className="gamut-glpvwy-LayoutGrid e10xj1580">
-      {json.map((book, index) => (
-        <li key={index} className="gamut-87ddz7-StyledColumn e1y0e4q30">
-          <div className="gamut-1jn300j-FlexBox e1tc6bzh0">
-            <div className="card" style={{ width: "18rem" }}>
-              <img src="..." className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h3 className="card-title">{book.title}</h3>
+      {json.map((book, index) =>
+        book.id === authorid ? (
+          Authorrrr(authorid)
+        ) : (
+          <li key={index} className="gamut-87ddz7-StyledColumn e1y0e4q30">
+            <div className="gamut-1jn300j-FlexBox e1tc6bzh0">
+              <div className="card" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h3 className="card-title">{book.title}</h3>
 
-                {/* <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p> */}
-              </div>
-              <ul className="list-group list-group-flush">
-                
-
-                <li className="list-group-item">{book.author}<button id="ert">Edit</button></li>
-                <li className="list-group-item">{book.publicationdate}</li>
-                <li className="list-group-item">{book.isbn}</li>
-              </ul>
-              <div className="card-body">
-                <button
-                  href="#"
-                  className="card-link"
-                  onClick={() => delete1(book.id)}
-                >
-                  Delete
-                </button>
-                <button
-                  href="#"
-                  className="card-link"
-                  onClick={() => edit11(book.id)}
-                >
-                  Edit
-                </button>
+                  {/* <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p> */}
+                </div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">
+                    {book.author}
+                    <button onClick={() => authorShow(book.id)} id="ert">
+                      Details
+                    </button>
+                  </li>
+                  <li className="list-group-item">{book.publicationdate}</li>
+                  <li className="list-group-item">{book.isbn}</li>
+                </ul>
+                <div className="card-body">
+                  <button
+                    href="#"
+                    className="card-link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      delete1(book.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    href="#"
+                    className="card-link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      edit11(book.id);
+                    }}
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      ))}
+          </li>
+        )
+      )}
     </ul>
   );
-
+  // function cccc() {
+  //   if (details) {
+  //     return Authorrrr(authorid);
+  //   } else {
+  //     return View;
+  //   }
+  // }
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -445,9 +527,12 @@ function App() {
         Add book
       </button>
 
-      {add ? addB : !add && !edit ? View : null}
+      {add ? addB : !add && !edit && !edit2 ? View : null}
       {edit ? addB : null}
-    </div>
+      {edit2 ? <AuthorPage setEdit2 ={setEdit2} setJson={setJson} json ={json} authorid={authorid}/>:null}
+      {/* {details ? cccc() : null} */}
+      {/* {details ? <AuthorPage id ={authorid} json ={json} setJson={setJson}/> :null} */}
+    </div>                                                    
   );
 }
 

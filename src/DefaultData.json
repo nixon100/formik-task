@@ -1,30 +1,38 @@
 [
   {
     "id":1,
-    "title": "title1",
-    "author": "author",
+    "title": "Letting Go",
+    "author": "Philip Roth",
     "isbn": "1234567890",
-    "publicationdate": "1999-12-30"
+    "publicationdate": "1999-12-30",
+    "DOB" :"1830-02-15",
+    "biography" :"“My dad gave me the novel Letting Go by Philip Roth. Dad read very little fiction—only one book of fiction a year. He was a political scientist, and he read dozens and dozens of non-fiction, academic books every year."
   },
   {
     "id":2,
-    "title": "title2",
-    "author": "author",
+    "title": "Fear of Flying",
+    "author": "Erica Jong",
     "isbn": "1234567890",
-    "publicationdate": "1999-12-30"
+    "publicationdate": "1999-12-30",
+    "DOB" :"1797-05-16",
+    "biography" :"“Knowing it is my favorite book, for my 34th birthday, a boyfriend once gave me a signed first edition of Erica Jong’s Fear of Flying.Having always read tattered paperback versions, I had no idea the original was adorned with a spectacularly ornate cover that’s evocative of a Hieronymus Bosch."
   },
   {
     "id":3,
-    "title": "title3",
-    "author": "author",
+    "title": "When Breath Becomes Air",
+    "author": "Paul Kalanithi",
     "isbn": "1234567890",
-    "publicationdate": "1999-12-30"
+    "publicationdate": "1999-12-30",
+    "DOB" :"1922-11-05",
+    "biography" :"“When Breath Becomes Air by Paul Kalanithi. Kalanithi’s brave memoir chronicles in exquisite prose his brave battle with terminal illness, but rather than verge into depressing territory, it is a triumphant and inspiring read."
   },
   {
     "id":4,
-    "title": "title4",
-    "author": "author",
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
     "isbn": "1234567890",
-    "publicationdate": "1999-12-30"
+    "publicationdate": "1999-12-30",
+    "DOB" :"1882-12-25",
+    "biography" :"“My grandmother was a complicated woman—angry, loving, gossipy, and vibrant. She lived a country’s length away from me, and we were never close, even though I was named after her. The truth is, her mercurial moods scared me a little."
   }
 ]
