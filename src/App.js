@@ -11,8 +11,8 @@ function App() {
   const [edit, setEdit] = useState(false);
   const [editid, setEditid] = useState();
   const [details, setDetails] = useState(false);
-  const [authorid, setAuthorid] = useState();
-  const [edit2,setEdit2] = useState(false);
+  const [authorid, setAuthorid] = useState(0);
+  const [edit2, setEdit2] = useState(false);
 
   const validate = (values) => {
     const errors = {};
@@ -73,10 +73,12 @@ function App() {
     },
   });
   const Authorrrr = (id) => {
+    console.log(id);
     //     const aw = json.filter((item) => item.id== id);
     // console.log(aw)
-    return (
-      // <ul className="gamut-glpvwy-LayoutGrid e10xj1580">
+    if (authorid > 0) {
+      return (
+        // <ul className="gamut-glpvwy-LayoutGrid e10xj1580">
         <li className="gamut-87ddz7-StyledColumn e1y0e4q30">
           <div className="gamut-1jn300j-FlexBox e1tc6bzh0">
             <div className="card" style={{ width: "18rem" }}>
@@ -89,11 +91,26 @@ function App() {
                 <li className="list-group-item">{json[id - 1].DOB}</li>
               </ul>
               <div className="card-body">
-                <button href="#" className="card-link" onClick={() => editTwo()}>
-                  Edit
-                </button>
+                {(json[id-1].biography==="") ? (
+                  <button
+                    type="button"
+                    className="card-link"
+                    onClick={() => editTwo()}
+                  >
+                    Add
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="card-link"
+                    onClick={() => editTwo()}
+                  >
+                    Edit
+                  </button>
+                )}
+
                 <button
-                  href="#"
+                  type="button"
                   className="card-link"
                   onClick={() => cancelE()}
                 >
@@ -103,14 +120,15 @@ function App() {
             </div>
           </div>
         </li>
-      // </ul>
-    );
+        // </ul>
+      );
+    }
   };
 
   // function authorEdit (){
 
   // }
-  function cancelE (){
+  function cancelE() {
     setAuthorid(0);
   }
   function authorShow(id) {
@@ -137,17 +155,21 @@ function App() {
     setEdit(true);
   }
   function editTwo(i) {
-   setEdit2(true)
+    setEdit2(true);
+  }
+  function cancel1 (){
+    setEdit(false);
+    setAdd(false);
   }
   // Function to add or edit an item in the json array
   function addOrEditItem(v, id) {
     // Check if edit is true
     if (edit) {
       console.log("Edit item with id:", id);
-      setJson(json.map((e) => (e.id === id ? v : e)));
+      setJson(json.map((e) => (e.id === id ? {...e,...v, id: e.id } : e)));
     } else {
       console.log("Add new item:", v);
-      setJson((prevJson) => [...prevJson, { ...v, id: json.length + 1 }]);
+      setJson((prevJson) => [...prevJson, { ...v, id: json.length + 1,DOB :"",biography:"", }]);
     }
 
     // Reset form values
@@ -284,7 +306,7 @@ function App() {
           <button type="submit" class="btn btn-primary btn-sm">
             Save
           </button>
-          <button type="button" class="btn btn-secondary btn-sm">
+          <button type="button" class="btn btn-secondary btn-sm" onClick={cancel1}>
             Cancel
           </button>
         </div>
@@ -519,20 +541,27 @@ function App() {
           </div>
         </div>
       </nav>
-      <button
+     {(!add && !edit && !edit2) ? ( <button
         type="button"
-        className="btn btn-primary btn-sm"
+        className="btn btn-primary btn-sm ddff"
         onClick={() => setAdd(true)}
       >
         Add book
-      </button>
+      </button>):null}
 
       {add ? addB : !add && !edit && !edit2 ? View : null}
       {edit ? addB : null}
-      {edit2 ? <AuthorPage setEdit2 ={setEdit2} setJson={setJson} json ={json} authorid={authorid}/>:null}
+      {edit2 ? (
+        <AuthorPage
+          setEdit2={setEdit2}
+          setJson={setJson}
+          json={json}
+          authorid={authorid}
+        />
+      ) : null}
       {/* {details ? cccc() : null} */}
       {/* {details ? <AuthorPage id ={authorid} json ={json} setJson={setJson}/> :null} */}
-    </div>                                                    
+    </div>
   );
 }
 

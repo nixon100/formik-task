@@ -58,6 +58,10 @@ const AuthorPage = (props) => {
     },
   });
 
+  function cancell () {
+    props.setEdit2(false)
+  }
+
   return (
     <div className="adddd">
       <form onSubmit={formik.handleSubmit}>
@@ -149,7 +153,7 @@ const AuthorPage = (props) => {
           <button type="submit" class="btn btn-primary btn-sm">
             Save
           </button>
-          <button type="button" class="btn btn-secondary btn-sm">
+          <button type="button" class="btn btn-secondary btn-sm" onClick={cancell}>
             Cancel
           </button>
         </div>
