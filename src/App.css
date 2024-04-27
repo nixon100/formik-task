@@ -84,7 +84,13 @@ button.btn.btn-primary.btn-sm.ddff {
   margin-top: 15px;
   margin-left: 15px;
 }
-  
+li.list-group-item.fghj {
+  font-weight: 700;
+}
+span {
+  font-weight: 500;
+  color: #76bfec;
+}
 
 /* .gamut-1jn300j-FlexBox {
   display: flex;

@@ -429,14 +429,14 @@ function App() {
               </p> */}
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
+                  <li className="list-group-item fghj">
                     {book.author}
                     <button onClick={() => authorShow(book.id)} id="ert">
                       Details
                     </button>
                   </li>
-                  <li className="list-group-item">{book.publicationdate}</li>
-                  <li className="list-group-item">{book.isbn}</li>
+                  <li className="list-group-item rtyu"><span>Pubication - </span>{book.publicationdate}</li>
+                  <li className="list-group-item"><span>ISBN - </span>{book.isbn}</li>
                 </ul>
                 <div className="card-body">
                   <button
