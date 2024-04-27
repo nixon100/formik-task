@@ -88,7 +88,7 @@ function App() {
                 <p className="card-text">{json[id - 1].biography}</p>
               </div>
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">{json[id - 1].DOB}</li>
+                <li className="list-group-item"><span>DOB - </span>{json[id - 1].DOB}</li>
               </ul>
               <div className="card-body">
                 {(json[id-1].biography==="") ? (

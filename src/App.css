@@ -91,6 +91,10 @@ span {
   font-weight: 500;
   color: #76bfec;
 }
+p.card-text {
+  color: #5371bc;
+  font-family: math;
+}
 
 /* .gamut-1jn300j-FlexBox {
   display: flex;
